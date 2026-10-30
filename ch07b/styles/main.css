@@ -55,6 +55,48 @@ header {
 	}
 }
 
+/* the styles for the navigation menu */
+.navbar {
+	background-color: var(--primary-color);
+}
+.menu {
+	list-style: none;
+	margin-left: 0;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+.menu li {
+	position: relative;
+}
+.menu a {
+	display: block;
+	padding: .75em 1em;
+	color: var(--light);
+	text-decoration: none;
+}
+.menu a.current {
+	color: var(--accent-color);
+	font-weight: bold;
+}
+.menu a.current:hover, .menu a.current:focus {
+	font-style: normal;
+}
+.submenu {
+	display: none;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	width: 12em;
+	list-style: none;
+	margin-left: 0;
+	background-color: var(--primary-color);
+	z-index: 1;
+}
+.menu li:hover .submenu {
+	display: block;
+}
+
 /* the styles for the main element */
 main {
 	clear: left;
@@ -92,9 +134,6 @@ aside {
 	flex-basis: 25%;
 	& h2 {
 		color: var(--primary-color);
-	}
-	& img {
-		margin-bottom: .9em;
 	}
 	& blockquote {
 		font-style: italic;
