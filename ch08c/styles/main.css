@@ -115,6 +115,7 @@ footer {
 /* the styles for the navigation menu */
 .navbar {
 	background-color: var(--primary-color);
+    container-type: inline-size;
 	& ul {
 		list-style-type: none;
 		margin: 0;
@@ -134,8 +135,45 @@ footer {
 	}
 }
 
+input[type="checkbox"] {
+	display: none;
+}
+.menu-btn {
+	display: block;
+	padding: .25em .5em;
+	font-size: 200%;
+	color: var(--light);
+}
+.menu-btn::before {
+	content: "\2630";
+}
+input[type="checkbox"]:checked + .menu-btn::before {
+	content: "\2715";
+}
+
 .menu {
-	display: flex;
+	display: none;
+	flex-direction: column;
 	flex-wrap: wrap;
 	justify-content: space-evenly;
+	position: absolute;
+	background-color: var(--primary-color);
+	z-index: 1;
 }
+input[type="checkbox"]:checked ~ .menu {
+	display: flex;
+}
+
+/* the container query for the navigation menu */
+@container (min-width: 560px) {
+	.menu-btn {
+		display: none;
+	}
+	.menu,
+	input[type="checkbox"]:checked ~ .menu {
+		display: flex;
+		flex-direction: row;
+		position: static;
+	}
+}
+
