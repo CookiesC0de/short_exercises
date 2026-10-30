@@ -128,16 +128,42 @@ footer {
 	}
 }
 
+#menu-btn {
+	display: none;
+}
+.menu-btn {
+	display: block;
+	padding: .25em .5em;
+	font-size: 200%;
+	color: var(--light);
+}
+.menu-btn::before {
+	content: "\2630";
+}
+#menu-btn:checked + .menu-btn::before {
+	content: "\2715";
+}
+
 .menu {
-	display: flex;
+	display: none;
+	flex-direction: column;
 	flex-wrap: wrap;
 	justify-content: space-evenly;
+	position: absolute;
+	background-color: var(--primary-color);
+	z-index: 1;
+}
+#menu-btn:checked ~ .menu {
+	display: flex;
 }
 
 .menu li:has(.submenu) {
 	position: relative;
 	& small {
 		margin-left: .25em; /* add space for arrow */
+	}
+		& small::after {
+		content: "\25B6";
 	}
 	&:hover > .submenu {
 		display: block;
@@ -146,11 +172,33 @@ footer {
 
 .submenu {
 	position: absolute;
-	left: 0;
+	top: 0;
+	left: 100%;
 	background-color: var(--primary-color);
 	color: var(--light);
 	width: 175%;
 	display: none;
+}
+
+/* the media query for the navigation menu */
+@media only screen and (min-width: 544px) {
+	.menu-btn {
+		display: none;
+	}
+	.menu,
+	#menu-btn:checked ~ .menu {
+		display: flex;
+		flex-direction: row;
+		position: static;
+	}
+	.menu li:has(.submenu) small::after {
+		content: "\25BC";
+	}
+	.submenu {
+		top: 100%;
+		left: 0;
+		z-index: 1;
+	}
 }
 
 /* the media query for the page */
@@ -170,4 +218,3 @@ footer {
 		flex-basis: 25%;
 	}
 }
-
