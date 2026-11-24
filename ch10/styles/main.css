@@ -7,6 +7,11 @@
 	--dark: black;
 }
 
+@font-face {
+	font-family: "Ink Free";
+	src: url("../fonts/Inkfree.ttf");
+}
+
 /* reset */
 * {
 	margin: 0;
@@ -62,11 +67,16 @@ main {
 	display: flex;
 }
 
+main a {
+	color: color-mix(in srgb, var(--accent-color) 65%, var(--primary-color) 35%);
+}
+
 /* the styles for the section */
 section {
 	flex-basis: 75%;
 	& h1 {
 		padding-top: .5em;
+		font-family: "Ink Free", cursive;
 	}
 	& h2 {
 		color: var(--primary-color);
@@ -87,11 +97,19 @@ article {
 	border-top: 3px solid var(--primary-color);
 	padding-top: .5em;
 	margin-bottom: .5em;
-	& img {
+		& figure {
 		float: left;
 		margin: .25em 1em 1em 0;
-		border: 1px solid var(--dark);
 		width: min(100%, 225px);
+	}
+	& figcaption {
+		font-weight: bold;
+		font-size: 110%;
+		padding-bottom: .5em;
+	}
+	& figure img {
+		width: 100%;
+		border: 1px solid var(--dark);
 	}
 }
 
